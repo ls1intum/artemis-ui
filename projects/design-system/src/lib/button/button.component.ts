@@ -2,17 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'storybook-button',
+  selector: 'artemis-button',
+  standalone: true,
   imports: [CommonModule],
-  template: ` <button
-    type="button"
-    (click)="onClick.emit($event)"
-    [ngClass]="classes"
-    [ngStyle]="{ 'background-color': backgroundColor }"
-  >
-    {{ label }}
-  </button>`,
-  styleUrls: ['./button.css'],
+  templateUrl: './button.component.html',
+  styleUrl: './button.component.css'
 })
 export default class ButtonComponent {
   /**
@@ -48,8 +42,8 @@ export default class ButtonComponent {
   onClick = new EventEmitter<Event>();
 
   public get classes(): string[] {
-    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+    const mode = this.primary ? 'artemis-button--primary' : 'artemis-button--secondary';
 
-    return ['storybook-button', `storybook-button--${this.size}`, mode];
+    return ['artemis-button', `artemis-button--${this.size}`, mode];
   }
 }
